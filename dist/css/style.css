@@ -1,0 +1,27 @@
+
+.first{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.form{
+    margin-left: 40px;
+}
+
+.memeContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+.picture{
+    display: flex;
+    width: 24%;
+    height: 24%;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.marked{
+    opacity: 0.6;
+}
