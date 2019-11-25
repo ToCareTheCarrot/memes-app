@@ -2,16 +2,15 @@ import axios from 'axios';
 import qs from 'query-string';
 
 const apiUrl = 'https://api.imgflip.com/get_memes';
+const apiPost = 'https://api.imgflip.com/caption_image';
 const amountOfMemeInput = document.querySelector('.first');
 const form = document.querySelector('.form');
+const form1 = document.createElement('form');
 const memeContainer = document.querySelector('.memeContainer');
 const body = document.querySelector('body');
 const input1 = document.createElement('input');
 const input2 = document.createElement('input');
 const inputHidden = document.createElement('input');
-const apiPost = 'https://api.imgflip.com/caption_image';
-const form1 = document.createElement('form');
-
 
 form.onsubmit = (e) => {
     e.preventDefault();
@@ -20,12 +19,11 @@ form.onsubmit = (e) => {
 
 async function getMemes(){
 
-    const response = await axios(`${apiUrl}`);
+    const response = await axios(apiUrl);
     const memes = response.data.data.memes;
-    const numberOfMemes = amountOfMemeInput.value;
 
     const selectedMemes = [];
-    for (let i = 0; i < numberOfMemes; i++){
+    for (let i = 0; i < amountOfMemeInput.value; i++){
       selectedMemes.push(memes[i]);
     }
 
@@ -36,7 +34,6 @@ async function renderMemes(selectedMemes){
     memeContainer.innerHTML = '';
     inputHidden.classList.add('hidden');
     body.appendChild(inputHidden);
-    console.log(selectedMemes);
 
     for (let i = 0; i < selectedMemes.length; i++){
       const img = document.createElement('img');
